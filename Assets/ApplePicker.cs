@@ -12,9 +12,12 @@ public class ApplePicker : MonoBehaviour
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
 
+    public GameOver gameOver;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameOver = FindObjectOfType<GameOver>();
         basketList = new List<GameObject>();
         for(int i=0; i <numBaskets; i++){
             GameObject tBasketGO = Instantiate<GameObject>(basketPrefab);
@@ -35,9 +38,12 @@ public class ApplePicker : MonoBehaviour
         basketList.RemoveAt(basketIndex);
         Destroy(basketGO);
 
-        if(basketList.Count == 0){
-            SceneManager.LoadScene("_Scene_0");
+        if(basketList.Count <= 0){
+            gameOver.ShowGameOver();
         }
+    }
+    public void BranchHit() {
+        gameOver.ShowGameOver();
     }
 
     // Update is called once per frame
@@ -46,3 +52,4 @@ public class ApplePicker : MonoBehaviour
         
     }
 }
+
