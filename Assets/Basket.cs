@@ -58,7 +58,7 @@ public class Basket : MonoBehaviour
         {
             Debug.Log("Branch collected!");
             Destroy(collidedWith);
-            
+
             ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
             apScript.BranchHit();
         }
