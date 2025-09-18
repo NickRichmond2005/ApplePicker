@@ -31,6 +31,7 @@ public class Basket : MonoBehaviour
     void OnCollisionEnter(Collision coll)
     {
         GameObject collidedWith = coll.gameObject;
+        Debug.Log("Collided with " + collidedWith.name);
         if (collidedWith.CompareTag("Apple"))
         {
             Destroy(collidedWith);
@@ -53,8 +54,9 @@ public class Basket : MonoBehaviour
                 levelCounter.score += 1;
             }
         }
-        else if (collidedWith.CompareTag("Branch"))
+        if (collidedWith.CompareTag("Branch"))
         {
+            Debug.Log("Branch collected!");
             Destroy(collidedWith);
             
             ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
